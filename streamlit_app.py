@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+# Function to chat with XLSX files
 def chat_with_xlsx(file_path):
     df = pd.read_excel(file_path)
     st.write(df.head())  # Display the first few rows of the file
@@ -29,6 +30,15 @@ def chat_with_xlsx(file_path):
         columns_df = df[columns]
         st.write(columns_df)
 
+# Function to ask a question
+def ask_question():
+    question = st.text_input("Ask a question")
+    
+    if question:
+        # You can add your custom logic here to generate a response to the user's question
+        # For example, you could use a natural language processing (NLP) model to generate responses.
+        response = "You asked: " + question  # Replace this with your actual response logic
+        st.write("Response:", response)
 
 def main():
     st.title("Chat with XLSX Files")
@@ -36,7 +46,8 @@ def main():
     
     if file_path is not None:
         chat_with_xlsx(file_path)
-
+    
+    ask_question()  # Call the function to ask a question
 
 if __name__ == "__main__":
     main()
